@@ -276,6 +276,14 @@ def input_parser(plan, input_args):
         )
 
     if (
+        result.get("mev_type") == constants.HELIX_MEV_TYPE
+        and result["network_params"]["preset"] == "minimal"
+    ):
+        fail(
+            "Helix relay does not support the minimal preset. Please use preset: mainnet"
+        )
+
+    if (
         result["mev_params"].get("mev_builder_subsidy") != 0
         and result["network_params"].get("prefunded_accounts") == {}
     ):
