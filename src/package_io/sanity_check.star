@@ -367,6 +367,7 @@ SUBCATEGORY_PARAMS = {
         "mev_builder_cl_image",
         "mev_builder_cl_extra_params",
         "mev_builder_subsidy",
+        "helix_trusted_builder_pubkey",
         "mev_boost_image",
         "mev_boost_args",
         "mev_relay_api_extra_args",
