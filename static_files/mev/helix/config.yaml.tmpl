@@ -71,6 +71,22 @@ is_registration_instance: true  # Accepts validator registrations
 # Admin API authentication token
 admin_token: "admin_token"
 
+# Builders known to the relay. Required so trusted_builders can match by builder_id.
+builders:
+  - pub_key: "{{ .HELIX_TRUSTED_BUILDER_PUBKEY }}"
+    builder_info:
+      collateral: "0"
+      is_optimistic: false
+      builder_id: "ethgas"
+      builder_ids: []
+
+# Relay-wide default validator preferences.
+validator_preferences:
+  filtering: regional
+  trusted_builders:
+    - "ethgas"
+  header_delay: true
+
 # Alternative: Console logging
 logging:
   type: Console

@@ -735,6 +735,7 @@ def input_parser(plan, input_args):
             mev_builder_cl_image=result["mev_params"]["mev_builder_cl_image"],
             mev_builder_extra_data=result["mev_params"]["mev_builder_extra_data"],
             mev_builder_subsidy=result["mev_params"]["mev_builder_subsidy"],
+            helix_trusted_builder_pubkey=result["mev_params"]["helix_trusted_builder_pubkey"],
             mev_boost_image=result["mev_params"]["mev_boost_image"],
             mev_boost_args=result["mev_params"]["mev_boost_args"],
             mev_relay_api_extra_args=result["mev_params"]["mev_relay_api_extra_args"],
@@ -1733,6 +1734,7 @@ def get_default_mev_params(mev_type, preset):
         mev_builder_cl_image = DEFAULT_CL_IMAGES[constants.CL_TYPE.lighthouse]
     mev_builder_extra_data = None
     mev_builder_subsidy = 0
+    helix_trusted_builder_pubkey = constants.DEFAULT_MEV_PUBKEY
     mev_boost_image = constants.DEFAULT_FLASHBOTS_MEV_BOOST_IMAGE
     mev_boost_args = ["mev-boost", "--relay-check"]
     mev_relay_api_extra_args = []
@@ -1798,6 +1800,7 @@ def get_default_mev_params(mev_type, preset):
         if mev_type == constants.MOCK_MEV_TYPE
         else None,
         "mev_builder_subsidy": mev_builder_subsidy,
+        "helix_trusted_builder_pubkey": helix_trusted_builder_pubkey,
         "mev_builder_cl_image": mev_builder_cl_image,
         "mev_builder_extra_data": mev_builder_extra_data,
         "mev_builder_extra_args": mev_builder_extra_args,

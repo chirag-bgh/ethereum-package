@@ -102,6 +102,7 @@ def launch_helix_relay(
         beacon_uris,
         genesis_validators_root,
         postgres,
+        mev_params.helix_trusted_builder_pubkey,
     )
 
     # Read the helix config template
@@ -168,6 +169,7 @@ def new_helix_relay_config_template_data(
     beacon_uris,
     genesis_validators_root,
     postgres,
+    helix_trusted_builder_pubkey,
 ):
     return {
         "NETWORK_NAME": network_params.network,
@@ -184,5 +186,6 @@ def new_helix_relay_config_template_data(
         "HELIX_RELAY_WEBSITE_PORT": HELIX_RELAY_WEBSITE_PORT,
         "HELIX_RELAY_ENDPOINT_URL": "helix-relay:{}".format(HELIX_RELAY_ENDPOINT_PORT),
         "HELIX_RELAY_PUBKEY": constants.DEFAULT_MEV_PUBKEY,
+        "HELIX_TRUSTED_BUILDER_PUBKEY": helix_trusted_builder_pubkey,
         "GENESIS_CONFIG_MOUNT_PATH_ON_CONTAINER": constants.GENESIS_DATA_MOUNTPOINT_ON_CLIENTS,
     }
