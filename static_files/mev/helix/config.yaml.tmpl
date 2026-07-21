@@ -79,12 +79,15 @@ builders:
       is_optimistic: false
       builder_id: "ethgas"
       builder_ids: []
+      api_key: "{{ .HELIX_BUILDER_API_KEY }}"
 
 # Relay-wide default validator preferences.
+# For ethgas only submission use; 
+# trusted_builders:
+#    - "ethgas"
 validator_preferences:
   filtering: global
-  trusted_builders:
-    - "ethgas"
+  trusted_builders: []
   header_delay: true
 
 # Alternative: Console logging
