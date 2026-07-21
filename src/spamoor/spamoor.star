@@ -66,7 +66,12 @@ def launch_spamoor(
                         "throughput": 100,
                         "max_pending": 200,
                         "max_wallets": 200,
-                        "client_group": "mevbuilder",
+                        # Submit swaps to the non-builder geth nodes so the flow gossips
+                        # over p2p and every builder sees it. Targeting "mevbuilder" sends
+                        # them only to the in-enclave builder's EL, which runs
+                        # --txpool.no-local-transactions-propagation and therefore never
+                        # forwards them
+                        "client_group": "geth",
                         "deploy_client_group": "default",
                     },
                 }
